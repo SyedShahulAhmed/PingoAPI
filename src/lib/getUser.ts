@@ -6,26 +6,17 @@ import { connectDB } from "./db";
 import User from "@/models/user.model";
 
 export async function getUser() {
-    await connectDB();
+  await connectDB();
 
-    const token =
-        (await cookies()).get("token")?.value;
+  const token = (await cookies()).get("token")?.value;
 
-    console.log("TOKEN:", token);
+  if (!token) return null;
 
-    if (!token) return null;
+  const payload = verifyToken(token);
 
-    const payload = verifyToken(token);
+  if (!payload) return null;
 
-    console.log("PAYLOAD:", payload);
+  const user = await User.findById(payload.userId).select("-password");
 
-    if (!payload) return null;
-
-    const user = await User.findById(
-        payload.userId
-    ).select("-password");
-
-    console.log("DB USER:", user);
-
-    return user;
+  return user;
 }
