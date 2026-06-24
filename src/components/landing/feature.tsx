@@ -74,7 +74,7 @@ export default function Features() {
             return (
               <div
                 key={feature.title}
-                className="group rounded-[32px] border border-white/5 bg-white/1.5p-8 transition-all duration-300 hover:border-primary/20 hover:bg-white/2.5]"
+                className="group rounded-[32px] border border-white/5 bg-white/1.5p-8 transition-all duration-300 p-5 hover:border-primary/20 hover:bg-white/2.5]"
               >
                 <div className="flex items-center gap-4 pr-5">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10">
@@ -86,7 +86,7 @@ export default function Features() {
                   </span>
                 </div>
 
-                <h3 className="mt-6 text-2xl font-bold text-white">
+                <h3 className="mt-6 text-2xl font-bold  text-white">
                   {feature.title}
                 </h3>
 
