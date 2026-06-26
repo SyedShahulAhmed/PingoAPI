@@ -10,9 +10,14 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "Pingo API",
-  description: "Pingo API",
+  description:
+    "Monitor APIs, track uptime, response times, and activity logs in real time.",
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
