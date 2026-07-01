@@ -21,7 +21,7 @@ export async function login(data: LoginInput) {
     if (!validated.success) {
       return {
         success: false,
-        message: validated.error.errors[0].message,
+        message: validated.error.issues[0].message,
       };
     }
 
