@@ -6,7 +6,12 @@ if (!MONGODB_URI) {
   throw new Error("Mongo URI Missing");
 }
 
-let cached = global.mongoose;
+type MongooseCache = {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+};
+
+let cached = global.mongoose as MongooseCache;
 
 if (!cached) {
   cached = global.mongoose = {
