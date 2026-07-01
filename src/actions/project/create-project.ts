@@ -26,7 +26,7 @@ export async function createProject(data: {
             return {
                 success: false,
                 message:
-                    validated.error.errors[0].message,
+                    validated.error.issues[0].message,
             };
         }
 
