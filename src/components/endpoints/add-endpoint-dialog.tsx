@@ -31,6 +31,17 @@ interface Props {
   projectId: string;
 }
 
+type EndpointMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+
+type EndpointInterval = "5m" | "1m" | "1h";
+
+interface EndpointForm {
+  name: string;
+  url: string;
+  method: EndpointMethod;
+  interval: EndpointInterval;
+}
+
 export default function AddEndpointDialog({ projectId }: Props) {
   const router = useRouter();
 
@@ -38,7 +49,7 @@ export default function AddEndpointDialog({ projectId }: Props) {
 
   const [loading, setLoading] = useState(false);
 
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<EndpointForm>({
     name: "",
     url: "",
     method: "GET",
@@ -111,7 +122,7 @@ export default function AddEndpointDialog({ projectId }: Props) {
 
             <Select
               value={form.method}
-              onValueChange={(value) =>
+              onValueChange={(value: EndpointMethod) =>
                 setForm({
                   ...form,
                   method: value,
@@ -141,7 +152,7 @@ export default function AddEndpointDialog({ projectId }: Props) {
 
             <Select
               value={form.interval}
-              onValueChange={(value) =>
+              onValueChange={(value: EndpointInterval) =>
                 setForm({
                   ...form,
                   interval: value,
